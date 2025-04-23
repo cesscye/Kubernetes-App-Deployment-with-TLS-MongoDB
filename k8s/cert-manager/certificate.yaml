@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: flask-app-cert
+  namespace: flask
+spec:
+  secretName: flask-app-tls
+  duration: 8760h
+  renewBefore: 360h
+  subject:
+    organizations:
+    - MyOrg
+  commonName: flask-app.com
+  dnsNames:
+  - flask-app.com
+  issuerRef:
+    name: k8s-ca-issuer
+    kind: ClusterIssuer
