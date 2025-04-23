@@ -58,6 +58,7 @@ Set up MetalLB to provide a LoadBalancer IP for internal network access.
 │   ├── ingress.yaml
 │   ├── cert-manager/
 │   │   ├── cluster-issuer.yaml
+            k8s-ca-secret.yaml
 │   │   ├── certificate.yaml
 │   └── metallb-config.yaml
 
