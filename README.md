@@ -61,7 +61,7 @@ Access your app securely over HTTPS
 
 🔗 Connect with Me
 
-LinkedIn: [your-linkedin-profile]Docker Hub: [your-dockerhub-link]GitHub: [your-repo-link]
+LinkedIn:https://www.linkedin.com/in/yeyintphyo/ Docker Hub: https://hub.docker.com/repositories/cescye) GitHub: https://github.com/cesscye
 
 This project is a practical demonstration of Kubernetes app deployment, TLS with internal CA, and service exposure using Ingress and MetalLB. Great for learning internal cluster networking and security setups.
 
