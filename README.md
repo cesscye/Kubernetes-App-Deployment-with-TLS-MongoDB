@@ -49,11 +49,44 @@ Set up MetalLB to provide a LoadBalancer IP for internal network access.
 
 🧪 Try It Yourself
 
-Deploy NGINX Ingress Controller
+# Deploy NGINX Ingress Controller
+#Install NGINX Ingress Controller
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
 
-Install MetalLB and configure IP pool
+helm install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace
 
-Install cert-manager
+#Check Logs in Ingress Controller
+kubectl logs -n ingress-nginx deploy/ingress-nginx-controller
+
+#Install MetalLB and configure the IP pool
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.9/config/manifests/metallb-native.yaml
+#Create metallb-config.yaml
+
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: default-address-pool
+  namespace: metallb-system
+spec:
+  addresses:
+  - 192.168.1.240-192.168.1.250  # Replace with a free IP range on your local network
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: l2-advert
+  namespace: metallb-system
+---
+kubectl apply -f metallb-config.yaml
+
+
+#Install cert-manager
+#Install via Helm (most flexible and recommended):
+
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set crds.enabled=true
 
 Apply manifests in the correct order
 
