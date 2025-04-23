@@ -1,3 +1,25 @@
 #Check logs ingress-nginx controller
 
 kubectl logs -n ingress-nginx deploy/ingress-nginx-controller
+
+#Check ingress
+
+kubectl get ingress -n flask -o wide
+kubectl get <ingress> -n flask -o yaml
+
+#Check secretname
+
+kubectl get secret flask-app-tls -n flask -o yaml
+
+# Extract and decode the cert
+kubectl get secret flask-app-tls -n flask -o jsonpath='{.data.tls\.crt}' | base64 -d | openssl x509 -text -noout
+
+# Extract and decode the private key
+kubectl get secret flask-app-tls -n flask -o jsonpath='{.data.tls\.key}' | base64 -d | openssl rsa -check
+
+#Check Cert-Manager
+
+kubectl get cert-manager
+kubectl get all -n cert-manager
+kubectl get secret -n cert-manager
+kubectl get secret k8s-ca-secret -n cert-manager -o yaml
