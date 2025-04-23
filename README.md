@@ -46,21 +46,6 @@ Set up MetalLB to provide a LoadBalancer IP for internal network access.
 
 ✅ Full CI-style deployment: Docker -> Kubernetes
 
-📂 File Structure
-
-├── app.py
-├── Dockerfile
-├── k8s/
-│   ├── flask-deployment.yaml
-│   ├── flask-service.yaml
-│   ├── mongo-statefulset.yaml
-│   ├── mongo-headless-service.yaml
-│   ├── ingress.yaml
-│   ├── cert-manager/
-│   │   ├── cluster-issuer.yaml
-            k8s-ca-secret.yaml
-│   │   ├── certificate.yaml
-│   └── metallb-config.yaml
 
 🧪 Try It Yourself
 
